@@ -1,10 +1,9 @@
 # How-to-add-button-column-in-Flutter-DataTable--SfDataGrid-
 
-The Syncfusion [Flutter DataGrid](https://help.syncfusion.com/flutter/datagrid/overview) provides the support to load any widget in the cells. In this article, you can learn about how to load the button widget for specific column and perform any action on that button click. 
+The Syncfusion [Flutter DataGrid](https://help.syncfusion.com/flutter/datagrid/overview) supports loading any widget in the cells. In this article, you can learn how to load the button widget for a specific column and perform any action on that button click. 
 
 ## STEP 1:
 Initialize the [SfDataGrid](https://pub.dev/documentation/syncfusion_flutter_datagrid/latest/datagrid/SfDataGrid-class.html) widget with all the required properties. 
-
 
 ```dart
   List<Employee> _employees = <Employee>[];
