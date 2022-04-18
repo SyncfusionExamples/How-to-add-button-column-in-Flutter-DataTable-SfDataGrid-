@@ -1,11 +1,23 @@
-# How-to-add-button-column-in-Flutter-DataTable--SfDataGrid-
+import 'package:flutter/material.dart';
+import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 
-The Syncfusion [Flutter DataGrid](https://help.syncfusion.com/flutter/datagrid/overview) supports loading any widget in the cells. In this article, you can learn how to load the button widget for a specific column and perform any action on that button click. 
+void main() {
+  runApp(MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const SfDataGridDemo()));
+}
 
-## STEP 1:
-Initialize the [SfDataGrid](https://pub.dev/documentation/syncfusion_flutter_datagrid/latest/datagrid/SfDataGrid-class.html) widget with all the required properties. 
+class SfDataGridDemo extends StatefulWidget {
+  const SfDataGridDemo({Key? key}) : super(key: key);
 
-```dart
+  @override
+  _SfDataGridDemoState createState() => _SfDataGridDemoState();
+}
+
+class _SfDataGridDemoState extends State<SfDataGridDemo> {
   List<Employee> _employees = <Employee>[];
   late EmployeeDataSource _employeeDataSource;
 
@@ -48,14 +60,6 @@ Initialize the [SfDataGrid](https://pub.dev/documentation/syncfusion_flutter_dat
           ),
         ),
         GridColumn(
-          columnName: 'salary',
-          label: Container(
-            padding: const EdgeInsets.all(8.0),
-            alignment: Alignment.center,
-            child: const Text('Salary '),
-          ),
-        ),
-        GridColumn(
           columnName: 'button',
           label: Container(
             padding: const EdgeInsets.all(8.0),
@@ -67,11 +71,22 @@ Initialize the [SfDataGrid](https://pub.dev/documentation/syncfusion_flutter_dat
     );
   }
 
-```
-## STEP 2: 
-Create a data source class by extending [DataGridSource](https://pub.dev/documentation/syncfusion_flutter_datagrid/latest/datagrid/DataGridSource-class.html) for mapping data to the SfDataGrid. In the [buildRow](https://pub.dev/documentation/syncfusion_flutter_datagrid/latest/datagrid/DataGridSource/buildRow.html) method, you can load the button widget based on the condition. Here, the respective row detail will be shown in the AlertDialog with a button click.
+  List<Employee> getEmployeeData() {
+    return [
+      Employee(10001, 'James', 'Project Lead '),
+      Employee(10002, 'Kathryn', 'Manager'),
+      Employee(10003, 'Lara', 'Developer'),
+      Employee(10004, 'Michael', 'Designer'),
+      Employee(10005, 'Martin', 'Developer'),
+      Employee(10006, 'Newberry', 'Developer'),
+      Employee(10007, 'Balnc', 'Developer'),
+      Employee(10008, 'Perry', 'Developer'),
+      Employee(10009, 'Gable', 'Developer'),
+      Employee(10010, 'Grimes', 'Developer'),
+    ];
+  }
+}
 
-```dart
 class EmployeeDataSource extends DataGridSource {
   EmployeeDataSource(List<Employee> employees) {
     buildDataGridRow(employees);
@@ -130,4 +145,9 @@ class EmployeeDataSource extends DataGridSource {
   }
 }
 
-```
+class Employee {
+  Employee(this.id, this.name, this.designation);
+  final int id;
+  final String name;
+  final String designation;
+}
